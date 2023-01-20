@@ -32,10 +32,80 @@ public class LinkedList<T> implements Iterable<T> {
 		}
 	}
 	
-	public void deleteNodo(T valor) {
+	public void deleteNodoPosicion(int valor) {
 		
-		//Nodo<T> buscado = new Nodo<T>(valor);
+		Nodo<T> actual = this.raiz;
+		Nodo<T> ant = null;		
+		int pos = 0;
+
+		try{
+			while ((pos<valor)&&(actual.getNext()!=null)){
+
+				ant = actual;
+				actual = actual.getNext();
+				pos++;
+			
+			}
+			if(actual.getNext()!=null){
+				ant.setNext(actual.getNext());
+			}
+			else{
+				ant.setNext(null);
+			}
+		}
+		catch(Exception exc){
+			System.out.print(exc);
+		}
+	
 	}
+
+	public void deleteAllCases(Nodo<T> otro){
+		
+		Nodo<T> actual = this.raiz;
+		Nodo<T> aux = null;
+		try{
+			while (actual!=null){
+				if((actual.equals(otro))&&(aux==null)){
+					actual = actual.getNext();
+					raiz = actual;
+				}
+				else if(actual.equals(otro)){
+					aux.setNext(actual.getNext());
+					actual = actual.getNext();
+				}
+				else{
+					aux = actual;
+					actual = actual.getNext();
+				}	
+			}
+		}
+		catch(Exception exc){
+			System.out.print(exc);
+		}
+	}
+
+	public int getPosition(Nodo<T> otro){
+
+		Nodo<T> actual = this.raiz;
+		int pos = 0;
+
+		while(actual.getNext()!=null){
+			if (actual.equals(otro)){
+				return pos;
+			}
+			else{
+				actual = actual.getNext();
+				pos++;
+			}
+		}
+		if(actual.getNext()==null&&(actual.equals(otro))){
+			return pos;
+		}
+		else{
+			return -1;
+		}
+	}
+
 	@Override
 	public Iterator<T> iterator() {
 		return new IteradorLista<T>(this.raiz);

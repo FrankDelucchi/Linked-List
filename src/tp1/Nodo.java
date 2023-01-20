@@ -40,4 +40,15 @@ public class Nodo<T> {
 			referencia.insertNext(n, orden);
 		}
 	}
+
+	public boolean equals (Object o){
+
+		try{
+			Nodo<T> nuevo = (Nodo<T>) o;
+			return this.getValue()==nuevo.getValue();
+		}
+		catch(Exception e){
+			return false;
+		}	
+	}
 }
