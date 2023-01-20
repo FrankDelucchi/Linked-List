@@ -2,4 +2,4 @@
 
 Proyect devoloped for the course of "Object oriented programming".
 
-Run the .src in any Framework that supports Java.
+The objective is reuse the linked-list, for mantain the order of the greatest ammount of students that this course has ever had.
