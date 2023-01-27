@@ -1,4 +1,4 @@
-package tp1;
+package Punto1;
 
 import java.util.Comparator;
 
