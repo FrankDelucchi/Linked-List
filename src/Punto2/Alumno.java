@@ -2,7 +2,9 @@ package Punto2;
 
 import java.util.ArrayList;
 
-public class Alumno {
+import Punto3.ElementoAcademico;
+
+public class Alumno extends ElementoAcademico{
 
     private String nombre;
     private String apellido;
@@ -14,6 +16,13 @@ public class Alumno {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
+        this.dni = dni;
+        this.intereses = new ArrayList<>();
+    }
+
+    public Alumno(String nombre, String apellido, long dni) {
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.dni = dni;
         this.intereses = new ArrayList<>();
     }
@@ -47,5 +56,17 @@ public class Alumno {
 
     public String getNombre() {
         return this.nombre;
+    }
+
+    @Override
+    public ArrayList<ElementoAcademico> getElementoAcademico(){
+        ArrayList<ElementoAcademico> res = new ArrayList<ElementoAcademico>();
+        res.add(this);
+        return res;
+    }
+
+    @Override
+    public int getCantAlumnos() {
+        return 1;
     }
 }
